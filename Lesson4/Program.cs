@@ -12,30 +12,48 @@ if (!isParsed || number < 1)
 int sum = GetSumOfNumbersInInterval(number);
 Console.WriteLine(sum);*/
 
+void TestPositiveGetSumOfNumbersInInterval(){
 int[] numbers = new int[] { 1, 2, 3, 4 };
 
-int[] sums = new int[] { 1, 3, 6, 10 };
+int[] expected = new int[] { 1, 3, 6, 10 };
 
 for (var i = 0; i < numbers.Length; i++)
 {
-    int sum = GetSumOfNumbersInInterval(numbers[i]);
+    int actual = GetSumOfNumbersInInterval(numbers[i]);
 
-    if (sum != sums[i])
+    if (actual != expected[i])
     {
-        Console.WriteLine($"Ожидали получить {sums[i]} а получили {sum}");
+        Console.WriteLine($"Ожидали получить {expected[i]} а получили {actual}");
     }
     else
     {
         Console.WriteLine("okay");
     }
 }
+}
+
+void Test()
+{
+    int[] lengths = new int[] { 1, 2, 3, 4 };
+
+    int[] expected = new int[] { 1, 2, 3, 4  };
+
+    for (var i = 0; i < lengths.Length; i++)
+    {
+        int[] actual = Fill(lengths[i]);
+        if(expected[i] == actual.Length)
+        {
+
+        }
+    }
+}
 
 int GetSumOfNumbersInInterval(int number)
 {
     int sum = 0;
-    for (var i = -1; i <= number; i++)
-    {
-        sum += i;
+    for (var i = -435643; i <= number; i++)
+    { 
+        sum += 1;
     }
 
     return sum;
