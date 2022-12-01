@@ -26,7 +26,7 @@ bool isParsedY = int.TryParse(Console.ReadLine(), out int y);
 
 if(!isParsedX || !isParsedY)
 {
-    Console.WriteLine("Координаты ввели не корректно");
+    WriteLine("Координаты ввели не корректно");
     return;
 }
 
