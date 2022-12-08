@@ -1,74 +1,89 @@
-﻿// Демонстрация решения
-// Задача 31: Задайте массив из 12 элементов,
-// заполненный случайными числами из промежутка [-9, 9].
-// Найдите сумму отрицательных и положительных элементов массива.
-// Например, в массиве [3,9,-8,1,0,-7,2,-1,8,-3,-1,6]
-// сумма положительных чисел равна 29, сумма отрицательных равна -20.
+﻿//Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+//Задание должно быть выполнено в методе. В методе не должно быть вывода в консоль. Не использовать String!
+//14212 -> нет
+//12821 -> да
+//23432 -> да
 
-string str = "Lalal {0}, gdfsdsf{1}, fsdfdsfds{2}";
-int[] array = GenerateArray(-9, 9, 12);
-PrintArray(array);
-int sumPositiveNumbers = GetSumPositiveNumbersInArray(array);
-int sumNegativeNumbers = GetSumNegativeNumbersInArray(array);
+Console.WriteLine("Введите пятизначное число ");
+bool isParse = int.TryParse(Console.ReadLine(), out int Number);
+//if(Number > 9999 | Number < 100000)
+//{
+//    Console.WriteLine("Число целое и пятизначное ");
+//}
+//else
+//{   
+//    Console.WriteLine("Вы ввели некооректное значение ");
+//}
 
-int[] a = new int[4]{1,2,34,5};
-a.Contains(12);
+int[] array = new int[0];
 
-void PrintArray(int[] array)
+int[] ReversArray = GetReversarray(array);    
+
+int[] IntegerArray = GetIntegerArray(Number);
+
+PrintАrray(array);
+
+if(array.Length == Number)
 {
-   /* for (var i = 0; i < array.Length; i++)
-    {
-        Console.Write("{array[i]}");
-    }*/
-    
-    //string message = string.Join(" ,", array);
-    Console.WriteLine($"[{string.Join(" ,", array)}]");
-    //Console.WriteLine("[{0}]",string.Join(" ,", array));
-
-    Console.WriteLine(str , 1, 23423, "");
+    Console.WriteLine("Palindrome");
+}
+else 
+{
+    Console.WriteLine("Not palindrome");
 }
 
-Console.WriteLine($"Сумма положительных чисел равна {sumPositiveNumbers}, сумма отрицательных равна {sumNegativeNumbers}.");
-
-int GetSumPositiveNumbersInArray(int[] array)
+int [] GetReversarray(int[] array)
 {
-    int sumPositiveNumbers = 0;
-    for (var i = 0; i < array.Length; i++)
+    int i = 0;
+    int length = array.Length;
+    int Revers = length - 1;
+    int[] arrayRevers = new int[array.Length];
+    while(i < length)
     {
-        if (array[i] >= 0)
-        {
-            sumPositiveNumbers += array[i];
-        }
+        arrayRevers[i] =  array[Revers];
+        i++;
+        Revers = Revers -1;
     }
 
-    return sumPositiveNumbers;
+    return arrayRevers; 
 }
 
-int GetSumNegativeNumbersInArray(int[] array)
+void PrintАrray(int[] Array)
 {
-    int sumNegativeNumbers = 0;
-    for (var i = 0; i < array.Length; i++)
+    for(int i = 0; i < Array.Length; i++)
     {
-        if (array[i] < 0)
-        {
-            sumNegativeNumbers += array[i];
-        }
-    }
-
-    return sumNegativeNumbers;
+        Console.WriteLine(Array[i]); 
+    }   
 }
 
+//Если отдельно делать, возникает ошибка:
+//Unhandled exception. System.IndexOutOfRangeException: Index was outside the bounds of the array.
+//at Program.<Main>$(String[] args) in C:\tich\Program_leng\Homework\Homework3\4\Program.cs:line 8
+//int tempNum = number % 10;
+//Console.WriteLine(temp);
+//int i = 0;
+//int[] array = new int[i];
+//array[i] = tempNum;
+//PrintАrray(array);
 
-
-int[] GenerateArray(int min, int max, int length)
+int[] GetIntegerArray (int number)
 {
-    Random random = new Random();
-    int[] array = new int[length];
-
-    for (var i = 0; i < array.Length; i++)
+    int count = 0;
+    while(number / 10 != 0)
     {
-        array[i] = random.Next(min, max + 1);
+        count++;
     }
+    count++;
 
+    int[] array = new int[count];
+
+    int i = 0;
+    while(number / 10 != 0)
+    {
+        int tempNum = number % 10;
+        array[i] = tempNum;
+        number = number / 10;
+        i++;
+    }
     return array;
 }
