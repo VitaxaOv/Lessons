@@ -1,4 +1,5 @@
-﻿namespace Common;
+﻿using System;
+namespace Common;
 
 // dotnet new classlib --name Common
 // dotnet add reference /Users/a2/Lessons/Common/Common.csproj
@@ -26,5 +27,19 @@ public static class Helper
         }
 
         return array;
+    }
+
+    public static int InputNumber()
+    {
+        bool isParsed = int.TryParse(Console.ReadLine(), out int number);
+
+        if(isParsed)
+        {
+            return number;
+        }
+        else
+        {
+            throw new ArgumentException("Ввели не правильное число");
+        }
     }
 }
