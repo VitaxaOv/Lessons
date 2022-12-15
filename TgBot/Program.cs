@@ -2,7 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-TelegramBotClient client = new TelegramBotClient("5768732527:AAHkTKI17wxR2RE-OZ_Rr5pkB78SIIXerPc");
+TelegramBotClient client = new TelegramBotClient("");
 
 User bot = client.GetMeAsync().Result;
 Console.WriteLine(bot.Username);
