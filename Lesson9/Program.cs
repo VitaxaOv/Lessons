@@ -6,7 +6,7 @@ for (var i = 0; i < 5; i++)
     Console.Write(" ! ");
 }
 
-Method();
+//Method();
 
 void Method(int i = 0)
 {
@@ -17,4 +17,12 @@ void Method(int i = 0)
     }
 
     return;
+}
+
+void Me(int[] arr = null)
+{
+    if(arr is null)
+    {
+        arr = new int[6];
+    }
 }
